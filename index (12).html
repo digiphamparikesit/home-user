@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digipharm V.4-user</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#eef3ec;
+    --ink:#0f2a20;
+    --ink-soft:#3c5a4d;
+    --green-900:#123528;
+    --green-800:#16412f;
+    --green-700:#1c5238;
+    --green-500:#2f8a5f;
+    --green-300:#8fd4ab;
+    --green-200:#c9ecd6;
+    --card-bg:#ffffff;
+    --card-border:#e3ece2;
+    --shadow: 0 10px 30px -18px rgba(15,42,32,0.35);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(143,212,171,0.25), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(28,82,56,0.10), transparent 55%),
+      var(--bg);
+    font-family:'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    color:var(--ink);
+    min-height:100vh;
+    padding: 40px 24px 64px;
+  }
+
+  .wrap{max-width:1080px;margin:0 auto;}
+
+  header{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:28px;
+  }
+
+  .logo-dot{
+    width:52px;height:52px;border-radius:16px;
+    background: linear-gradient(145deg, var(--green-700), var(--green-900));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow: var(--shadow);
+    flex-shrink:0;
+  }
+  .logo-dot svg{width:26px;height:26px;}
+
+  .title-block h1{
+    margin:0;
+    font-size:28px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  .title-block h1 .accent{color:var(--green-500);}
+  .title-block p{
+    margin:2px 0 0;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    font-weight:500;
+  }
+
+  .pill-badge{
+    margin-left:auto;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    color:var(--green-800);
+    background:var(--green-200);
+    border:1px solid var(--green-300);
+    padding:6px 14px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+
+  .progress-label{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.12em;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .progress-track{
+    height:8px;
+    border-radius:999px;
+    background:#dfe9dd;
+    overflow:hidden;
+    margin-bottom:32px;
+  }
+  .progress-fill{
+    height:100%;
+    width:38%;
+    border-radius:999px;
+    background: linear-gradient(90deg, var(--green-900), var(--green-500));
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+  }
+  @media (max-width:980px){ .grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .grid{grid-template-columns:1fr;} }
+
+  .card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-top:4px solid var(--green-500);
+    border-radius:16px;
+    padding:20px 18px 18px;
+    box-shadow: var(--shadow);
+    display:flex;
+    flex-direction:column;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{
+    transform:translateY(-3px);
+    box-shadow: 0 16px 34px -16px rgba(15,42,32,0.45);
+  }
+
+  .icon-box{
+    width:42px;height:42px;
+    border-radius:11px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;
+    margin-bottom:14px;
+  }
+
+  .card h3{
+    margin:0 0 6px;
+    font-size:15.5px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .card p{
+    margin:0 0 16px;
+    font-size:12.5px;
+    line-height:1.5;
+    color:var(--ink-soft);
+    flex-grow:1;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    background: linear-gradient(145deg, var(--green-700), var(--green-900));
+    color:#eafff0;
+    text-decoration:none;
+    font-size:12.5px;
+    font-weight:600;
+    padding:11px 14px;
+    border-radius:10px;
+    transition: filter .15s ease, transform .15s ease;
+  }
+  .btn:hover{filter:brightness(1.12); transform:translateX(1px);}
+  .btn svg{width:13px;height:13px;flex-shrink:0;}
+
+  .quick-menu{
+    margin-top:40px;
+    background: linear-gradient(160deg, var(--green-900), #0c261b);
+    border-radius:18px;
+    padding:26px 26px 28px;
+    box-shadow: var(--shadow);
+  }
+  .quick-menu .qm-label{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    color:var(--green-300);
+    margin-bottom:14px;
+  }
+  .qm-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .qm-pill{
+    background:rgba(143,212,171,0.14);
+    border:1px solid rgba(143,212,171,0.3);
+    color:#d9f6e4;
+    font-size:12.5px;
+    font-weight:600;
+    padding:8px 16px;
+    border-radius:999px;
+    text-decoration:none;
+    transition: background .15s ease;
+  }
+  .qm-pill:hover{background:rgba(143,212,171,0.28);}
+
+  footer{
+    text-align:center;
+    margin-top:34px;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  footer b{color:var(--green-800);}
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="logo-dot">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2 L21 6 V12 C21 17 17 21 12 22 C7 21 3 17 3 12 V6 Z" stroke="#8fd4ab" stroke-width="1.6"/>
+          <path d="M8.5 12.2 L11 14.6 L15.8 9.4" stroke="#c9ecd6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="title-block">
+        <h1>Digi<span class="accent">pharm</span> V.4-user</h1>
+        <p>Portal terpusat untuk seluruh aplikasi Digipharm</p>
+      </div>
+      <div class="pill-badge">V.4-USER</div>
+    </header>
+
+    <div class="progress-label">PILIH APLIKASI</div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
+
+    <div class="grid">
+
+      <!-- Mutasi Obat & BMHP -->
+      <div class="card">
+        <div class="icon-box" style="background:#e4f4ec;">📦</div>
+        <h3>Mutasi Obat &amp; BMHP</h3>
+        <p>Serah terima obat dan BMHP antar ruangan secara tercatat dan rapi.</p>
+        <a class="btn" href="https://digiphamparikesit.github.io/mutasi-obat-bmhp-ruangan/" target="_blank" rel="noopener">
+          Buka Aplikasi
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Jadwal Farmasi -->
+      <div class="card">
+        <div class="icon-box" style="background:#eee5fb;">🗓️</div>
+        <h3>Jadwal Staff Online</h3>
+        <p>Data staf, jadwal shift, dan jadwal farmasi yang bisa dilihat online.</p>
+        <a class="btn" href="https://digiphamparikesit.github.io/jadwal-farmasi/" target="_blank" rel="noopener">
+          Buka Aplikasi
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Expired Obat & BMHP -->
+      <div class="card">
+        <div class="icon-box" style="background:#fdece2;">⏰</div>
+        <h3>Expired Obat &amp; BMHP</h3>
+        <p>Laporan obat mendekati kadaluarsa (Near ED) dan yang sudah ED.</p>
+        <a class="btn" href="https://script.google.com/macros/s/AKfycbzH4X-Iz7-DNaPJbzuCNi89EpF9o0Fg_lPpLFXjOy5faBuqqk6QWzG8O4mIOLJSluZKGA/exec" target="_blank" rel="noopener">
+          Buka Aplikasi
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Fascon -->
+      <div class="card">
+        <div class="icon-box" style="background:#e3edfc;">🧮</div>
+        <h3>Fascon</h3>
+        <p>Kalkulator obat untuk perhitungan cepat dan akurat.</p>
+        <a class="btn" href="https://digiphamparikesit.github.io/fascon/" target="_blank" rel="noopener">
+          Buka Aplikasi
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Broadcast WA -->
+      <div class="card">
+        <div class="icon-box" style="background:#fdf3d8;">📣</div>
+        <h3>Broadcast WA</h3>
+        <p>Kirim pesan broadcast WhatsApp janji pasien secara cepat dan terstruktur.</p>
+        <a class="btn" href="https://digiphamparikesit.github.io/broadcast-wa/" target="_blank" rel="noopener">
+          Buka Aplikasi
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Form Izin -->
+      <div class="card">
+        <div class="icon-box" style="background:#e4f4ec;">📝</div>
+        <h3>Form Izin</h3>
+        <p>Ajukan form izin, sakit, dan cuti staf farmasi.</p>
+        <a class="btn" href="https://digiphamparikesit.github.io/formulir-farmasi/" target="_blank" rel="noopener">
+          Buka Aplikasi
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- SDM -->
+      <div class="card">
+        <div class="icon-box" style="background:#e3edfc;">📊</div>
+        <h3>SDM</h3>
+        <p>Data SDM, jenis kelamin, dan profesi tenaga kerja.</p>
+        <a class="btn" href="https://digiphamparikesit.github.io/sdm/" target="_blank" rel="noopener">
+          Buka Aplikasi
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Plate & Screw -->
+      <div class="card">
+        <div class="icon-box" style="background:#fdece2;">🦴</div>
+        <h3>Plate &amp; Screw</h3>
+        <p>Aplikasi data implan plate &amp; screw untuk kebutuhan tindakan ortopedi.</p>
+        <a class="btn" href="https://script.google.com/macros/s/AKfycbwQz__YDR_l25FJcLbRX7Ep9VaU0zdv01GNr2XmLFxavm3dqieRmUxRV0uJE90c3j6K/exec" target="_blank" rel="noopener">
+          Buka Aplikasi
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="quick-menu">
+      <div class="qm-label">MENU CEPAT</div>
+      <div class="qm-pills">
+        <a class="qm-pill" href="https://digiphamparikesit.github.io/mutasi-obat-bmhp-ruangan/" target="_blank" rel="noopener">Mutasi Obat &amp; BMHP</a>
+        <a class="qm-pill" href="https://digiphamparikesit.github.io/jadwal-farmasi/" target="_blank" rel="noopener">Jadwal Farmasi</a>
+        <a class="qm-pill" href="https://script.google.com/macros/s/AKfycbzH4X-Iz7-DNaPJbzuCNi89EpF9o0Fg_lPpLFXjOy5faBuqqk6QWzG8O4mIOLJSluZKGA/exec" target="_blank" rel="noopener">Expired Obat</a>
+        <a class="qm-pill" href="https://digiphamparikesit.github.io/fascon/" target="_blank" rel="noopener">Fascon</a>
+        <a class="qm-pill" href="https://digiphamparikesit.github.io/broadcast-wa/" target="_blank" rel="noopener">Broadcast WA</a>
+        <a class="qm-pill" href="https://digiphamparikesit.github.io/formulir-farmasi/" target="_blank" rel="noopener">Form Izin</a>
+        <a class="qm-pill" href="https://digiphamparikesit.github.io/sdm/" target="_blank" rel="noopener">SDM</a>
+        <a class="qm-pill" href="https://script.google.com/macros/s/AKfycbwQz__YDR_l25FJcLbRX7Ep9VaU0zdv01GNr2XmLFxavm3dqieRmUxRV0uJE90c3j6K/exec" target="_blank" rel="noopener">Plate &amp; Screw</a>
+      </div>
+    </div>
+
+    <footer>Digipharm <b>V.4-user</b> — Dashboard Internal Aplikasi</footer>
+
+  </div>
+</body>
+</html>
